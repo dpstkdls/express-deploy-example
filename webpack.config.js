@@ -7,7 +7,7 @@ module.exports = {
   target: 'node',
   
   // 2. 애플리케이션 진입점
-  entry: './src/index.js',
+  entry: './src/index.ts',
   
   // 3. 번들링 결과물 설정
   output: {
@@ -16,11 +16,21 @@ module.exports = {
     clean: true,
   },
 
+  // Webpack이 모듈을 해석하는 방식 설정
+  resolve: {
+    extensions: ['.ts', '.js'], // .ts 파일을 먼저 찾도록 설정
+  },
+
   // 4. node_modules를 번들에 포함하지 않도록 설정
   externals: [nodeExternals()],
 
   module: {
     rules: [
+      {
+        test: /\.ts$/, // .ts 파일 처리
+        exclude: /node_modules/,
+        use: 'ts-loader',
+      },
       {
         test: /\.js$/,
         exclude: /node_modules/,

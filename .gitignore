@@ -3,6 +3,7 @@
 
 # Build output
 /dist
+dist.tar
 
 # Logs
 logs
