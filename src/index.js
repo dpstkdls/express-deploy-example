@@ -1,6 +1,7 @@
 const express = require('express');
 const path = require('path');
 const bcrypt = require('bcrypt');
+require('dotenv').config(); // .env 파일 로드
 
 const app = express();
 const port = process.env.PORT || 3000;
